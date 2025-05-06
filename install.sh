@@ -5,7 +5,7 @@ sudo pacman -Syu --noconfirm
 sudo pacman -S --needed --noconfirm git base-devel
 
 echo "Installing yay..."
-git clone https://aur.archlinuX.org/yay.git
+git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si --noconfirm
 cd ..
