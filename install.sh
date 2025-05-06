@@ -4,6 +4,12 @@ echo "Updating the system..."
 sudo pacman -Syu --noconfirm
 sudo pacman -S --needed --noconfirm git base-devel
 
+echo "Installing yay..."
+git clone https://aur.archlinuX.org/yay.git
+cd yay
+makepkg -si --noconfirm
+cd ..
+
 if ! command -v zsh &> /dev/null; then
     echo "Zsh not found. Installing..."
     sudo pacman -S --needed --noconfirm zsh
