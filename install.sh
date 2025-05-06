@@ -31,9 +31,6 @@ yay -S --needed --noconfirm cups epson-inkjet-printer-escpr
 echo "Enabling and starting the CUPS service..."
 sudo systemctl enable --now cups.service
 
-echo "Installing NVM"
-yay -S --needed --noconfirm nvm
-
 echo "Installing oh-my-zsh"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
