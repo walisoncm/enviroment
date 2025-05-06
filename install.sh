@@ -2,7 +2,7 @@
 
 echo "Updating the system..."
 sudo pacman -Syu --noconfirm
-sudo pacman -S --needed --noconfirm git base -devel
+sudo pacman -S --needed --noconfirm git base-devel
 
 if ! command -v zsh &> /dev/null; then
     echo "Zsh not found. Installing..."
