@@ -27,3 +27,8 @@ rm -rf yay
 ```sh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/walisoncm/enviroment/refs/heads/main/install.sh)"
 ```
+
+## Uninstall enviroment
+```sh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/walisoncm/enviroment/refs/heads/main/uninstall.sh)"
+```
