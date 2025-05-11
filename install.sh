@@ -71,6 +71,9 @@ mv $HOME/Android $TOOLS
 echo '# Android SDK path'
 echo 'export ANDROID_HOME="$TOOLS/Android/Sdk"'
 
+echo 'Installing Ninja...'
+yay -S ninja
+
 echo 'Installing flutter..."
 git clone https://github.com/flutter/flutter.git $TOOLS/flutter
 echo '# Flutter SDK path'
