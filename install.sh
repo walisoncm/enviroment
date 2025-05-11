@@ -28,7 +28,7 @@ echo '# Tools path' >> ~/.zshrc
 echo 'export TOOLS=$HOME/Tools' >> ~/.zshrc
 
 echo 'Installing Android Studio...'
-yay -S android-studio android-sdk-cmdline-tools
+yay -S android-studio android-tools
 echo '' >> ~/.zshrc
 echo '# Android SDK path' >> ~/.zshrc
 echo 'export ANDROID_HOME="$TOOLS/Android/Sdk"' >> ~/.zshrc
