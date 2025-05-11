@@ -6,7 +6,7 @@ if ! command -v zsh &> /dev/null; then
 fi
 
 echo "Changing the default shell to zsh..."
-chsh -s $(which zsh) "$USER"
+sudo chsh -s $(which zsh) "$USER"
 echo "The default shell has been changed. Opening a new terminal window."
 
 echo "Updating the system..."
