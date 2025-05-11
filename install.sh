@@ -21,6 +21,57 @@ yay -S --needed --noconfirm cups epson-inkjet-printer-escpr
 echo 'Enabling and starting the CUPS service...'
 sudo systemctl enable --now cups.service
 
+echo 'Create Tools directory'
+mkdir $HOME/Tools
+export TOOLS=$HOME/Tools
+
+echo 'Installing Android Studio...'
+yay -S android-studio android-sdk-cmdline-tools
+mv $HOME/Android $TOOLS
+echo '# Android SDK path'
+echo 'export ANDROID_HOME="$TOOLS/Android/Sdk"'
+
+source ~/.zshrc
+
+echo 'Installing JDK...'
+yay -S jre-openjdk jdk-openjdk
+JDK_DIR=$(ls -d /usr/lib/jvm/java-*/ | tail -n 1)
+if [ -n "$JDK_DIR" ]; then
+  export JAVA_HOME="${JDK_DIR%/}"
+  export PATH="$JAVA_HOME/bin:$PATH"
+fi
+
+echo 'Installing flutter..."
+git clone https://github.com/flutter/flutter.git $TOOLS/flutter
+echo '# Flutter SDK path'
+echo 'export PATH="$PATH:$HOME/Development/flutter/bin"'
+
+echo 'Flutter dependencies'
+yay -S clang cmake ninja gradle --noconfirm
+
+echo 'Flutter set android sdk'
+flutter config --android-sdk $ANDROID_HOME
+
+echo 'Flutter enable web'
+flutter config --enable-web
+
+echo "Installing NVM..."
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh)"
+echo 'export NVM_DIR="$HOME/.nvm"' >> ~/.zshrc
+echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm' >> ~/.zshrc
+echo '[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion' >> ~/.zshrc
+
+echo "Installing Pyenv..."
+yay -S python-pyenv
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
+echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
+echo 'eval "$(pyenv init - zsh)"' >> ~/.zshrc
+
+echo "Installing Neovim and fzf..."
+yay -S --needed --noconfirm neovim fzf
+echo '# Fuzy finder' >> ~/.zshrc
+echo '[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh' >> ~/.zshrc
+
 echo 'Installing oh-my-zsh'
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
@@ -52,48 +103,5 @@ echo 'source $ZSH/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.
 echo 'Activates the zsh-syntax-highlighting plugin in the zsh configuration file...'
 echo 'plugins+=(zsh-syntax-highlighting)' >> ~/.zshrc
 echo 'source $ZSH/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh' >> ~/.zshrc
-
-echo 'Create Tools directory'
-mkdir $HOME/Tools
-export TOOLS=$HOME/Tools
-
-echo 'Installing Android Studio..."
-yay -S android-studio
-mv $HOME/Android $TOOLS
-echo '# Android SDK path'
-echo 'export ANDROID_HOME="$TOOLS/Android/Sdk"'
-
-echo 'Installing JDK...'
-yay -S jre-openjdk jdk-openjdk
-JDK_DIR=$(ls -d /usr/lib/jvm/java-*/ | tail -n 1)
-if [ -n "$JDK_DIR" ]; then
-  export JAVA_HOME="${JDK_DIR%/}"
-  export PATH="$JAVA_HOME/bin:$PATH"
-fi
-
-echo 'Installing ninja and gradle...'
-yay -S ninja gradle
-
-echo 'Installing flutter..."
-git clone https://github.com/flutter/flutter.git $TOOLS/flutter
-echo '# Flutter SDK path'
-echo 'export PATH="$PATH:$HOME/Development/flutter/bin"'
-
-echo "Installing NVM..."
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh)"
-echo 'export NVM_DIR="$HOME/.nvm"' >> ~/.zshrc
-echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm' >> ~/.zshrc
-echo '[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion' >> ~/.zshrc
-
-echo "Installing Pyenv..."
-yay -S python-pyenv
-echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
-echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
-echo 'eval "$(pyenv init - zsh)"' >> ~/.zshrc
-
-echo "Installing Neovim and fzf..."
-yay -S --needed --noconfirm neovim fzf
-echo '# Fuzy finder' >> ~/.zshrc
-echo '[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh' >> ~/.zshrc
 
 source ~/.zshrc
