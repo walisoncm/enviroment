@@ -23,10 +23,13 @@ sudo systemctl enable --now cups.service
 
 echo 'Create Tools directory'
 mkdir $HOME/Tools
-export TOOLS=$HOME/Tools
+echo '' >> ~/.zshrc
+echo '# Tools path' >> ~/.zshrc
+echo 'export TOOLS=$HOME/Tools' >> ~/.zshrc
 
 echo 'Installing Android Studio...'
 yay -S android-studio android-sdk-cmdline-tools
+echo '' >> ~/.zshrc
 echo '# Android SDK path' >> ~/.zshrc
 echo 'export ANDROID_HOME="$TOOLS/Android/Sdk"' >> ~/.zshrc
 echo 'export PATH="$PATH:$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator"' >> ~/.zshrc
@@ -43,6 +46,7 @@ fi
 
 echo 'Installing flutter...'
 git clone https://github.com/flutter/flutter.git $TOOLS/flutter
+echo '' >> ~/.zshrc
 echo '# Flutter SDK path' >> ~/.zshrc
 echo 'export PATH="$PATH:$HOME/Development/flutter/bin"' >> ~/.zshrc
 
@@ -57,18 +61,21 @@ flutter config --enable-web
 
 echo "Installing NVM..."
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh)"
+echo '' >> ~/.zshrc
 echo 'export NVM_DIR="$HOME/.nvm"' >> ~/.zshrc
 echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm' >> ~/.zshrc
 echo '[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion' >> ~/.zshrc
 
 echo "Installing Pyenv..."
 yay -S python-pyenv
+echo '' >> ~/.zshrc
 echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
 echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
 echo 'eval "$(pyenv init - zsh)"' >> ~/.zshrc
 
 echo "Installing Neovim and fzf..."
 yay -S --needed --noconfirm neovim fzf
+echo '' >> ~/.zshrc
 echo '# Fuzy finder' >> ~/.zshrc
 echo '[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh' >> ~/.zshrc
 
@@ -94,13 +101,16 @@ yay -S --needed --noconfirm \
     nerd-fonts-noto-sans-mono
 
 echo 'Activates the powerlevel10k theme in the zsh configuration file...'
+echo '' >> ~/.zshrc
 echo 'ZSH_THEME="powerlevel10k/powerlevel10k"' >> ~/.zshrc
 
 echo 'Activates the zsh-syntax-highlighting plugin in the zsh configuration file...'
+echo '' >> ~/.zshrc
 echo 'plugins+=(zsh-syntax-autosuggestions)' >> ~/.zshrc
 echo 'source $ZSH/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh' >> ~/.zshrc
 
 echo 'Activates the zsh-syntax-highlighting plugin in the zsh configuration file...'
+echo '' >> ~/.zshrc
 echo 'plugins+=(zsh-syntax-highlighting)' >> ~/.zshrc
 echo 'source $ZSH/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh' >> ~/.zshrc
 
