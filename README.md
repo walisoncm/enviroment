@@ -28,6 +28,19 @@ rm -rf yay
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/walisoncm/enviroment/refs/heads/main/install.sh)"
 ```
 
+## Finishing Flutter settings
+
+1. Open android-studio define install directory to: "~/Tools/Android/Sdk" and next;
+2. Access `More Actions > SDK Manager > SDK Tools` and check the option `Android SDK Command-line Tools (latest)`.
+
+```sh
+flutter doctor --android-licenses
+```
+
+```sh
+flutter doctor
+```
+
 ## Uninstall enviroment
 ```sh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/walisoncm/enviroment/refs/heads/main/uninstall.sh)"
