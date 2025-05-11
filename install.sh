@@ -58,11 +58,10 @@ mkdir $HOME/Tools
 export TOOLS=$HOME/Tools
 
 echo 'Installing Android Studio..."
-yay -S android-sdk-platform-tools android-sdk
+yay -S android-studio
 mv $HOME/Android $TOOLS
 echo '# Android SDK path'
 echo 'export ANDROID_HOME="$TOOLS/Android/Sdk"'
-echo 'export PATH="$PATH:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools/bin"'
 
 echo 'Installing JDK...'
 yay -S jre-openjdk jdk-openjdk
@@ -72,11 +71,8 @@ if [ -n "$JDK_DIR" ]; then
   export PATH="$JAVA_HOME/bin:$PATH"
 fi
 
-echo 'Installing Ninja...'
-yay -S ninja
-
-echo 'Installing Gradle...'
-yay -S gradle
+echo 'Installing ninja and gradle...'
+yay -S ninja gradle
 
 echo 'Installing flutter..."
 git clone https://github.com/flutter/flutter.git $TOOLS/flutter
