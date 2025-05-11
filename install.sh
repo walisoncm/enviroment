@@ -57,6 +57,14 @@ echo 'Create Tools directory'
 mkdir $HOME/Tools
 export TOOLS=$HOME/Tools
 
+echo 'Installing JDK...'
+yay -S jre-openjdk jdk-openjdk
+JDK_DIR=$(ls -d /usr/lib/jvm/java-*/ | tail -n 1)
+if [ -n "$JDK_DIR" ]; then
+  export JAVA_HOME="${JDK_DIR%/}"
+  export PATH="$JAVA_HOME/bin:$PATH"
+fi
+
 echo 'Installing Android Studio..."
 yay -S android-studio
 mv $HOME/Android $TOOLS
@@ -84,3 +92,5 @@ echo "Installing Neovim and fzf..."
 yay -S --needed --noconfirm neovim fzf
 echo '# Fuzy finder' >> ~/.zshrc
 echo '[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh' >> ~/.zshrc
+
+source ~/.zshrc
