@@ -32,3 +32,8 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/walisoncm/enviroment/refs/
 ```sh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/walisoncm/enviroment/refs/heads/main/uninstall.sh)"
 ```
+
+## Uninstall yay
+```sh
+sudo pacman -Rns yay
+```
