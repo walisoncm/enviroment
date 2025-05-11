@@ -1,16 +1,16 @@
 #!/bin/bash
 
 echo "Uninstalling Zen Browser..."
-sudo pacman -Rns zen-browser-bin
+sudo pacman -Rns zen-browser-bin --noconfirm
 echo "Zen Browser has been uninstalled."
 
 echo "Uninstalling Neovim and fzf..."
-sudo pacman -Rns neovim fzf
+sudo pacman -Rns neovim fzf --noconfirm
 sed -i '/\[ -f \~\/\.fzf\.zsh \] \&\& source \~\/\.fzf\.zsh/d' ~/.zshrc
 echo "Neovim and fzf have been uninstalled."
 
 echo "Uninstalling pyenv..."
-sudo pacman -Rns python-pyenv
+sudo pacman -Rns python-pyenv --noconfirm
 echo "pyenv has been uninstalled."
 rm -rf ~/.pyenv
 sed -i '/export PYENV_ROOT=.*$/d' ~/.zshrc
@@ -32,7 +32,7 @@ sudo systemctl disable --now cups.service
 echo "CUPS service has been disabled and stopped."
 
 echo "Uninstalling CUPS and Epson drivers..."
-sudo pacman -Rns cups epson-inkjet-printer-escpr
+sudo pacman -Rns cups epson-inkjet-printer-escpr --noconfirm
 echo "CUPS and Epson drivers have been uninstalled."
 
 echo "Removing the Oh-My-Zsh directory..."
@@ -46,7 +46,7 @@ sudo pacman -Rns \
   nerd-fonts-hack \
   nerd-fonts-jetbrains-mono \
   nerd-fonts-meslo-lg \
-  nerd-fonts-noto-sans-mono
+  nerd-fonts-noto-sans-mono --noconfirm
 echo "Fonts suggested by Powerlevel10k have been uninstalled."
 
 echo "Removing lines added to ~/.zshrc..."
@@ -66,5 +66,5 @@ else
 fi
 
 echo "Uninstalling Zsh..."
-sudo pacman -Rns zsh
+sudo pacman -Rns zsh --noconfirm
 echo "Zsh has been uninstalled."
