@@ -30,6 +30,7 @@ yay -S android-studio android-sdk-cmdline-tools
 mv $HOME/Android $TOOLS
 echo '# Android SDK path'
 echo 'export ANDROID_HOME="$TOOLS/Android/Sdk"'
+echo 'export PATH="$PATH:$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator"'
 
 source ~/.zshrc
 
