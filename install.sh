@@ -15,6 +15,11 @@ yay -Syu --noconfirm
 echo 'Installing Zen Browser'
 yay -S --needed --noconfirm zen-browser-bin
 
+echo 'Installing Ghostty'
+yay -S --needed --noconfirm ghostty
+
+# TODO: Install tmux
+
 echo 'Installing CUPS and Epson L3150 drivers via yay...'
 yay -S --needed --noconfirm cups epson-inkjet-printer-escpr
 
@@ -28,7 +33,7 @@ echo '# Tools path' >> ~/.zshrc
 echo 'export TOOLS=$HOME/Tools' >> ~/.zshrc
 
 echo 'Installing Android Studio...'
-yay -S android-studio android-tools
+yay -S --needed --noconfirm android-studio android-tools
 echo '' >> ~/.zshrc
 echo '# Android SDK path' >> ~/.zshrc
 echo 'export ANDROID_HOME="$TOOLS/Android/Sdk"' >> ~/.zshrc
@@ -37,7 +42,7 @@ echo 'export PATH="$PATH:$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator"' >
 source ~/.zshrc
 
 echo 'Installing JDK...'
-yay -S jre-openjdk jdk-openjdk
+yay -S --needed --noconfirm jre-openjdk jdk-openjdk
 JDK_DIR=$(ls -d /usr/lib/jvm/java-*/ | tail -n 1)
 if [ -n "$JDK_DIR" ]; then
   export JAVA_HOME="${JDK_DIR%/}"
@@ -51,7 +56,7 @@ echo '# Flutter SDK path' >> ~/.zshrc
 echo 'export PATH="$PATH:$HOME/Development/flutter/bin"' >> ~/.zshrc
 
 echo 'Flutter dependencies'
-yay -S clang cmake ninja gradle --noconfirm
+yay -S --needed --noconfirm clang cmake ninja gradle --noconfirm
 
 echo 'Flutter set android sdk'
 flutter config --android-sdk $ANDROID_HOME
@@ -67,7 +72,7 @@ echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm' >> ~/.
 echo '[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion' >> ~/.zshrc
 
 echo "Installing Pyenv..."
-yay -S python-pyenv
+yay -S --needed --noconfirm python-pyenv
 echo '' >> ~/.zshrc
 echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
 echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
@@ -78,6 +83,8 @@ yay -S --needed --noconfirm neovim fzf
 echo '' >> ~/.zshrc
 echo '# Fuzy finder' >> ~/.zshrc
 echo '[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh' >> ~/.zshrc
+
+# TODO: Clone nvim config and .fzf.zsh
 
 echo 'Installing oh-my-zsh'
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
