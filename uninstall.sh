@@ -1,22 +1,45 @@
 #!/bin/bash
 
-echo "Desinstalando Zen Browser..."
+echo "Uninstalling Zen Browser..."
 sudo pacman -Rns zen-browser-bin
-echo "Zen Browser foi desinstalado."
+echo "Zen Browser has been uninstalled."
 
-echo "Desinstalando CUPS e drivers Epson..."
-sudo pacman -Rns cups epson-inkjet-printer-escpr
-echo "CUPS e drivers Epson foram desinstalados."
+echo "Uninstalling Neovim and fzf..."
+sudo pacman -Rns neovim fzf
+sed -i '/\[ -f \~\/\.fzf\.zsh \] \&\& source \~\/\.fzf\.zsh/d' ~/.zshrc
+echo "Neovim and fzf have been uninstalled."
 
-echo "Desabilitando e parando o serviço CUPS..."
+echo "Uninstalling pyenv..."
+sudo pacman -Rns python-pyenv
+echo "pyenv has been uninstalled."
+rm -rf ~/.pyenv
+sed -i '/export PYENV_ROOT=.*$/d' ~/.zshrc
+sed -i '/command -v pyenv >\/dev\/null \|\| export PATH="\$PYENV_ROOT\/bin:\$PATH"$/d' ~/.zshrc
+sed -i '/eval "\$\(pyenv init - zsh\)"/d' ~/.zshrc
+echo "pyenv related files and configurations removed."
+
+echo "Uninstalling nvm..."
+rm -rf ~/.nvm
+echo "nvm has been uninstalled."
+sed -i '/export NVM_DIR=.*$/d' ~/.zshrc
+sed -i '/\[ -s "\$NVM_DIR\/nvm\.sh" \] \&\& \. "\$NVM_DIR\/nvm\.sh" # This loads nvm$/d' ~/.zshrc
+sed -i '/\[ -s "\$NVM_DIR\/bash_completion" \] \&\& \. "\$NVM_DIR\/bash_completion" # This loads nvm bash_completion$/d' ~/.zshrc
+sed -i '/source \/usr\/share\/nvm\/init\.sh$/d' ~/.zshrc
+echo "nvm related files and configurations removed."
+
+echo "Disabling and stopping the CUPS service..."
 sudo systemctl disable --now cups.service
-echo "Serviço CUPS foi desabilitado e parado."
+echo "CUPS service has been disabled and stopped."
 
-echo "Removendo o diretório do Oh-My-Zsh..."
+echo "Uninstalling CUPS and Epson drivers..."
+sudo pacman -Rns cups epson-inkjet-printer-escpr
+echo "CUPS and Epson drivers have been uninstalled."
+
+echo "Removing the Oh-My-Zsh directory..."
 rm -rf ~/.oh-my-zsh
-echo "Diretório do Oh-My-Zsh removido."
+echo "Oh-My-Zsh directory removed."
 
-echo "Desinstalando as fontes sugeridas pelo Powerlevel10k..."
+echo "Uninstalling fonts suggested by Powerlevel10k..."
 sudo pacman -Rns \
   adobe-source-code-pro-fonts \
   nerd-fonts-fira-code \
@@ -24,30 +47,24 @@ sudo pacman -Rns \
   nerd-fonts-jetbrains-mono \
   nerd-fonts-meslo-lg \
   nerd-fonts-noto-sans-mono
-echo "Fontes sugeridas pelo Powerlevel10k foram desinstaladas."
+echo "Fonts suggested by Powerlevel10k have been uninstalled."
 
-echo "Removendo as linhas adicionadas ao ~/.zshrc..."
+echo "Removing lines added to ~/.zshrc..."
 sed -i '/ZSH_THEME="powerlevel10k\/powerlevel10k"/d' ~/.zshrc
 sed -i '/plugins+=(zsh-syntax-autosuggestions)/d' ~/.zshrc
 sed -i '/source \$ZSH\/custom\/plugins\/zsh-autosuggestions\/zsh-autosuggestions.plugin.zsh/d' ~/.zshrc
 sed -i '/plugins+=(zsh-syntax-highlighting)/d' ~/.zshrc
 sed -i '/source \$ZSH\/custom\/plugins\/zsh-syntax-highlighting\/zsh-syntax-highlighting.zsh/d' ~/.zshrc
-sed -i '/\[ -f \~\/\.fzf\.zsh \] \&\& source \~\/\.fzf\.zsh/d' ~/.zshrc
-echo "Linhas relevantes removidas do ~/.zshrc. Você pode querer revisar o arquivo para outras modificações."
-
-echo "Desinstalando Neovim e fzf..."
-sudo pacman -Rns neovim fzf
-echo "Neovim e fzf foram desinstalados."
+echo "Relevant lines removed from ~/.zshrc. You might want to review the file for other modifications."
 
 if [[ "$SHELL" == *"/zsh" ]]; then
-  echo "Seu shell atual é Zsh. Tentando mudar para Bash..."
+  echo "Your current shell is Zsh. Attempting to switch to Bash..."
   sudo chsh -s $(which bash) "$USER"
-  echo "O shell padrão foi alterado para Bash. Você pode precisar reiniciar o terminal ou a sessão."
+  echo "The default shell has been changed to Bash. You might need to restart your terminal or session."
 else
-  echo "Seu shell atual não é Zsh, pulando a alteração do shell padrão."
+  echo "Your current shell is not Zsh, skipping default shell change."
 fi
 
-echo "Desinstalando o Zsh..."
+echo "Uninstalling Zsh..."
 sudo pacman -Rns zsh
-rm -rf ~/.oh-my-zsh
-echo "Zsh foi desinstalado."
+echo "Zsh has been uninstalled."
