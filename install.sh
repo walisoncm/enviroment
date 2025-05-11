@@ -27,9 +27,9 @@ export TOOLS=$HOME/Tools
 
 echo 'Installing Android Studio...'
 yay -S android-studio android-sdk-cmdline-tools
-echo '# Android SDK path'
-echo 'export ANDROID_HOME="$TOOLS/Android/Sdk"'
-echo 'export PATH="$PATH:$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator"'
+echo '# Android SDK path' >> ~/.zshrc
+echo 'export ANDROID_HOME="$TOOLS/Android/Sdk"' >> ~/.zshrc
+echo 'export PATH="$PATH:$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator"' >> ~/.zshrc
 
 source ~/.zshrc
 
@@ -41,10 +41,10 @@ if [ -n "$JDK_DIR" ]; then
   export PATH="$JAVA_HOME/bin:$PATH"
 fi
 
-echo 'Installing flutter..."
+echo 'Installing flutter...'
 git clone https://github.com/flutter/flutter.git $TOOLS/flutter
-echo '# Flutter SDK path'
-echo 'export PATH="$PATH:$HOME/Development/flutter/bin"'
+echo '# Flutter SDK path' >> ~/.zshrc
+echo 'export PATH="$PATH:$HOME/Development/flutter/bin"' >> ~/.zshrc
 
 echo 'Flutter dependencies'
 yay -S clang cmake ninja gradle --noconfirm
