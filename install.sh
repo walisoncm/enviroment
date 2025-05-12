@@ -65,7 +65,7 @@ echo 'Flutter enable web'
 flutter config --enable-web
 
 echo "Installing NVM..."
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh)"
+yay -S --needed --noconfirm nvm-git
 echo '' >> ~/.zshrc
 echo 'export NVM_DIR="$HOME/.nvm"' >> ~/.zshrc
 echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm' >> ~/.zshrc
