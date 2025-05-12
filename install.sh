@@ -37,6 +37,8 @@ yay -Syu --noconfirm
 
 echo 'Installing Zen Browser...'
 yay -S --needed --noconfirm zen-browser-bin
+echo '# Chrome executable path'
+echo 'export CHROME_EXECUTABLE="/usr/bin/zen-browser"' >> ~/.zshrc
 
 echo 'Installing Ghostty...'
 yay -S --needed --noconfirm ghostty
