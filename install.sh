@@ -5,9 +5,32 @@ if ! command -v zsh &> /dev/null; then
     sudo pacman -S --needed --noconfirm zsh
 fi
 
-echo 'Changing the default shell to zsh...'
-sudo chsh -s $(which zsh) "$USER"
-echo 'The default shell has been changed. Opening a new terminal window.'
+echo 'Installing oh-my-zsh'
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+echo 'Installing the powerlevel10k theme...'
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
+echo '' >> ~/.zshrc
+echo 'ZSH_THEME="powerlevel10k/powerlevel10k"' >> ~/.zshrc
+yay -S --needed --noconfirm \
+    adobe-source-code-pro-fonts \
+    nerd-fonts-fira-code \
+    nerd-fonts-hack \
+    nerd-fonts-jetbrains-mono \
+    nerd-fonts-meslo-lg \
+    nerd-fonts-noto-sans-mono
+
+echo 'Installing zsh-autosuggestions'
+git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
+echo '' >> ~/.zshrc
+echo 'plugins+=(zsh-syntax-autosuggestions)' >> ~/.zshrc
+echo 'source $ZSH/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh' >> ~/.zshrc
+
+echo 'Installing zsh-syntax-highlighting'
+git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting"
+echo '' >> ~/.zshrc
+echo 'plugins+=(zsh-syntax-highlighting)' >> ~/.zshrc
+echo 'source $ZSH/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh' >> ~/.zshrc
 
 echo 'Updating the system...'
 yay -Syu --noconfirm
@@ -90,39 +113,8 @@ echo '[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh' >> ~/.zshrc
 
 # TODO: Clone nvim config and .fzf.zsh
 
-echo 'Installing oh-my-zsh'
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-echo 'Installing zsh-syntax-highlighting'
-git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting"
-
-echo 'Installing zsh-autosuggestions'
-git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
-
-echo 'Installing the powerlevel10k theme...'
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
-
-echo 'Installing Powerlevel10k suggested fonts...'
-yay -S --needed --noconfirm \
-    adobe-source-code-pro-fonts \
-    nerd-fonts-fira-code \
-    nerd-fonts-hack \
-    nerd-fonts-jetbrains-mono \
-    nerd-fonts-meslo-lg \
-    nerd-fonts-noto-sans-mono
-
-echo 'Activates the powerlevel10k theme in the zsh configuration file...'
-echo '' >> ~/.zshrc
-echo 'ZSH_THEME="powerlevel10k/powerlevel10k"' >> ~/.zshrc
-
-echo 'Activates the zsh-syntax-highlighting plugin in the zsh configuration file...'
-echo '' >> ~/.zshrc
-echo 'plugins+=(zsh-syntax-autosuggestions)' >> ~/.zshrc
-echo 'source $ZSH/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh' >> ~/.zshrc
-
-echo 'Activates the zsh-syntax-highlighting plugin in the zsh configuration file...'
-echo '' >> ~/.zshrc
-echo 'plugins+=(zsh-syntax-highlighting)' >> ~/.zshrc
-echo 'source $ZSH/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh' >> ~/.zshrc
+echo 'Changing the default shell to zsh...'
+sudo chsh -s $(which zsh) "$USER"
+echo 'The default shell has been changed. Opening a new terminal window.'
 
 source ~/.zshrc
