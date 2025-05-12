@@ -70,11 +70,12 @@ source ~/.zshrc
 
 echo 'Installing JDK...'
 yay -S --needed --noconfirm jre-openjdk jdk-openjdk
-JDK_DIR=$(ls -d /usr/lib/jvm/java-*/ | tail -n 1)
-if [ -n "$JDK_DIR" ]; then
-  export JAVA_HOME="${JDK_DIR%/}"
-  export PATH="$JAVA_HOME/bin:$PATH"
-fi
+echo '' >> ~/.zshrc
+echo 'JDK_DIR=$(ls -d /usr/lib/jvm/java-*/ | tail -n 1)' >> ~/.zshrc
+echo 'if [ -n "$JDK_DIR" ]; then' >> ~/.zshrc
+echo '  export JAVA_HOME="${JDK_DIR%/}"' >> ~/.zshrc
+echo '  export PATH="$JAVA_HOME/bin:$PATH"' >> ~/.zshrc
+echo 'fi' >> ~/.zshrc
 
 echo 'Installing flutter...'
 git clone https://github.com/flutter/flutter.git $TOOLS/flutter
