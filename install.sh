@@ -95,9 +95,12 @@ flutter config --enable-web
 echo "Installing NVM..."
 yay -S --needed --noconfirm nvm-git
 echo '' >> ~/.zshrc
-echo 'export NVM_DIR="$HOME/.nvm"' >> ~/.zshrc
-echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm' >> ~/.zshrc
-echo '[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion' >> ~/.zshrc
+echo 'export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf "%s/.nvm" "${HOME}" || printf "%s/nvm" "${XDG_CONFIG_HOME}")"' >> ~/.zshrc
+echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads NVM' >> ~/.zshrc
+
+# echo 'export NVM_DIR="$HOME/.nvm"' >> ~/.zshrc
+# echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm' >> ~/.zshrc
+# echo '[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion' >> ~/.zshrc
 
 echo "Installing Pyenv..."
 yay -S --needed --noconfirm python-pyenv
