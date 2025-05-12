@@ -117,6 +117,5 @@ echo '[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh' >> ~/.zshrc
 
 echo 'Changing the default shell to zsh...'
 sudo chsh -s $(which zsh) "$USER"
-echo 'The default shell has been changed. Opening a new terminal window.'
 
 reboot

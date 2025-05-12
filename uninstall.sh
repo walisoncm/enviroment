@@ -70,4 +70,4 @@ sudo chsh -s $(which bash) "$USER"
 echo "Uninstalling Zsh..."
 sudo pacman -Rns --noconfirm zsh
 
-echo "Uninstallation complete.  You may need to restart your terminal or the system."
+reboot
