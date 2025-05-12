@@ -32,10 +32,10 @@ echo "Removing Tools directory..."
 rm -rf $HOME/Tools
 
 echo "Uninstalling NVM..."
-sudo pacman -Rns --noconfirm nvm-git
+sudo pacman -Rns --noconfirm nvm
 
 echo "Uninstalling Pyenv..."
-sudo pacman -Rns --noconfirm python-pyenv
+rm -rf $HOME/.pyenv
 
 echo "Uninstalling Neovim and fzf..."
 sudo pacman -Rns --noconfirm neovim fzf
