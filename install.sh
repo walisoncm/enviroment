@@ -18,6 +18,10 @@ yay -S --needed --noconfirm zen-browser-bin
 echo 'Installing Ghostty'
 yay -S --needed --noconfirm ghostty
 
+echo 'Installing Docker'
+yay -S --needed --noconfirm docker docker-desktop
+sudo usermod -aG docker $USER
+
 # TODO: Install tmux
 
 echo 'Installing CUPS and Epson L3150 drivers via yay...'
