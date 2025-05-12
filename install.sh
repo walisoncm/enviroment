@@ -12,7 +12,7 @@ NO_DEFAULT_SHELL=yes sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyz
 echo 'Installing the powerlevel10k theme...'
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
 echo '' >> ~/.zshrc
-echo 'ZSH_THEME="powerlevel10k/powerlevel10k"' >> ~/.zshrc
+sed -i 's/^ZSH_THEME=.*/ZSH_THEME="powerlevel10k\/powerlevel10k"/' ~/.zshrc
 yay -S --needed --noconfirm \
     adobe-source-code-pro-fonts \
     nerd-fonts-fira-code \
