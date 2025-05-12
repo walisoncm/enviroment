@@ -19,17 +19,17 @@ sudo pacman -Rns --noconfirm cups epson-inkjet-printer-escpr
 echo "Disabling and stopping the CUPS service..."
 sudo systemctl disable --now cups.service
 
-echo "Uninstalling Android Studio and tools..."
-sudo pacman -Rns --noconfirm android-studio android-tools
-
-echo "Uninstalling JDK..."
-sudo pacman -Rns --noconfirm jdk-openjdk
-
-echo "Removing flutter..."
+echo "Removing Flutter..."
 rm -rf $HOME/Tools/flutter
 
 echo "Uninstalling Flutter dependencies..."
 sudo pacman -Rns --noconfirm clang cmake ninja gradle
+
+echo "Uninstalling JDK..."
+sudo pacman -Rns --noconfirm jdk-openjdk
+
+echo "Uninstalling Android Studio and tools..."
+sudo pacman -Rns --noconfirm android-studio android-tools
 
 echo "Removing Tools directory..."
 rm -rf $HOME/Tools
