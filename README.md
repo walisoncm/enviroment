@@ -30,8 +30,13 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/walisoncm/enviroment/refs/
 
 ## Finishing Flutter settings
 
-1. Open android-studio define install directory to: "~/Tools/Android/Sdk" and next;
-2. Access `More Actions > SDK Manager > SDK Tools` and check the option `Android SDK Command-line Tools (latest)`.
+Open android-studio and access `More Actions > SDK Manager > SDK Tools` and check the option `Android SDK Command-line Tools (latest)` confirm and finish.
+
+```sh
+mv $HOME/Android $TOOLS
+```
+
+Open android-studio again and define install directory to: "~/Tools/Android/Sdk" and next and close.
 
 ```sh
 flutter doctor --android-licenses
