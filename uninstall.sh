@@ -40,9 +40,6 @@ sudo pacman -Rns --noconfirm python-pyenv
 echo "Uninstalling Neovim and fzf..."
 sudo pacman -Rns --noconfirm neovim fzf
 
-echo "Removing oh-my-zsh..."
-rm -rf ~/.oh-my-zsh
-
 echo "Removing zsh-syntax-highlighting..."
 rm -rf "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting"
 
@@ -51,6 +48,9 @@ rm -rf "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
 
 echo "Removing the powerlevel10k theme..."
 rm -rf "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
+
+echo "Removing oh-my-zsh..."
+rm -rf ~/.oh-my-zsh
 
 echo "Uninstalling Powerlevel10k suggested fonts..."
 sudo pacman -Rns --noconfirm \
