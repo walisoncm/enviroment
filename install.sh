@@ -35,13 +35,16 @@ echo 'source $ZSH/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting
 echo 'Updating the system...'
 yay -Syu --noconfirm
 
-echo 'Installing Zen Browser'
+echo 'Installing Zen Browser...'
 yay -S --needed --noconfirm zen-browser-bin
 
-echo 'Installing Ghostty'
+echo 'Installing Ghostty...'
 yay -S --needed --noconfirm ghostty
 
-echo 'Installing Docker'
+echo 'Installing Insomnia...'
+yay -S --needed --noconfirm insomnia-bin
+
+echo 'Installing Docker...'
 yay -S --needed --noconfirm docker docker-desktop
 sudo usermod -aG docker $USER
 

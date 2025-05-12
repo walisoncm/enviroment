@@ -6,6 +6,9 @@ sudo pacman -Rns --noconfirm zen-browser-bin
 echo "Uninstalling Ghostty..."
 sudo pacman -Rns --noconfirm ghostty
 
+echo "Uninstalling Insomnia..."
+sudo pacman -Rns --noconfirm insomnia-bin
+
 echo "Uninstalling Docker and Docker Desktop..."
 sudo pacman -Rns --noconfirm docker docker-desktop
 sudo gpasswd -d $USER docker # Removing user from the docker group
