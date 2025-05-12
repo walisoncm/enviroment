@@ -23,7 +23,7 @@ echo "Uninstalling Android Studio and tools..."
 sudo pacman -Rns --noconfirm android-studio android-tools
 
 echo "Uninstalling JDK..."
-sudo pacman -Rns --noconfirm jre-openjdk jdk-openjdk
+sudo pacman -Rns --noconfirm jdk-openjdk
 
 echo "Removing flutter..."
 rm -rf $HOME/Tools/flutter

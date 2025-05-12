@@ -69,8 +69,6 @@ echo '# Android SDK path' >> ~/.zshrc
 echo 'export ANDROID_HOME="$TOOLS/Android/Sdk"' >> ~/.zshrc
 echo 'export PATH="$PATH:$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator"' >> ~/.zshrc
 
-source ~/.zshrc
-
 echo 'Installing JDK...'
 yay -S --needed --noconfirm jre-openjdk jdk-openjdk
 echo '' >> ~/.zshrc
@@ -90,7 +88,7 @@ echo 'Flutter dependencies'
 yay -S --needed --noconfirm clang cmake ninja gradle --noconfirm
 
 echo 'Flutter set android sdk'
-flutter config --android-sdk $ANDROID_HOME
+flutter config --android-sdk $HOME/Tools/Android/Sdk
 
 echo 'Flutter enable web'
 flutter config --enable-web
@@ -121,4 +119,4 @@ echo 'Changing the default shell to zsh...'
 sudo chsh -s $(which zsh) "$USER"
 echo 'The default shell has been changed. Opening a new terminal window.'
 
-source ~/.zshrc
+reboot
