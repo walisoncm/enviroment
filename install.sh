@@ -81,7 +81,7 @@ echo '  export JAVA_HOME="${JDK_DIR%/}"' >> ~/.zshrc
 echo '  export PATH="$JAVA_HOME/bin:$PATH"' >> ~/.zshrc
 echo 'fi' >> ~/.zshrc
 
-echo 'Installing flutter...'
+echo 'Installing Flutter...'
 git clone https://github.com/flutter/flutter.git $HOME/Tools/flutter
 echo '' >> ~/.zshrc
 echo '# Flutter SDK path' >> ~/.zshrc
