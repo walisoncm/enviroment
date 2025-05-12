@@ -81,7 +81,7 @@ echo 'Installing flutter...'
 git clone https://github.com/flutter/flutter.git $TOOLS/flutter
 echo '' >> ~/.zshrc
 echo '# Flutter SDK path' >> ~/.zshrc
-echo 'export PATH="$PATH:$HOME/Development/flutter/bin"' >> ~/.zshrc
+echo 'export PATH="$PATH:$TOOLS/flutter/bin"' >> ~/.zshrc
 
 echo 'Flutter dependencies'
 yay -S --needed --noconfirm clang cmake ninja gradle --noconfirm
