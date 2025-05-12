@@ -4,7 +4,7 @@ echo "Uninstalling Zen Browser..."
 sudo pacman -Rns --noconfirm zen-browser-bin
 
 echo "Uninstalling Ghostty..."
-sudo pacman -Rns --noconfirm ghostty
+sudo pacman -Rns --noconfirm ghostty tmux
 
 echo "Uninstalling Insomnia..."
 sudo pacman -Rns --noconfirm insomnia-bin

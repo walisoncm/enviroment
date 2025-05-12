@@ -41,16 +41,17 @@ echo '# Chrome executable path'
 echo 'export CHROME_EXECUTABLE="/usr/bin/zen-browser"' >> ~/.zshrc
 
 echo 'Installing Ghostty...'
-yay -S --needed --noconfirm ghostty
+yay -S --needed --noconfirm ghostty tmux
 
 echo 'Installing Insomnia...'
 yay -S --needed --noconfirm insomnia-bin
 
+echo 'Installing Discord...'
+yay -S --needed --noconfirm discord
+
 echo 'Installing Docker...'
 yay -S --needed --noconfirm docker docker-desktop
 sudo usermod -aG docker $USER
-
-# TODO: Install tmux
 
 echo 'Installing CUPS and Epson L3150 drivers via yay...'
 yay -S --needed --noconfirm cups epson-inkjet-printer-escpr
