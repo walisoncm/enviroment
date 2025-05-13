@@ -52,6 +52,7 @@ yay -S --needed --noconfirm discord
 echo 'Installing Docker...'
 yay -S --needed --noconfirm docker docker-desktop
 sudo usermod -aG docker $USER
+sudo systemctl enable docker
 
 echo 'Installing CUPS and Epson L3150 drivers via yay...'
 yay -S --needed --noconfirm cups epson-inkjet-printer-escpr
