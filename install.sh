@@ -37,11 +37,15 @@ yay -Syu --noconfirm
 
 echo 'Installing Zen Browser...'
 yay -S --needed --noconfirm zen-browser-bin
-echo '# Chrome executable path'
+echo '' >> ~/.zshrc
+echo '# Chrome executable path' >> ~/.zshrc
 echo 'export CHROME_EXECUTABLE="/usr/bin/zen-browser"' >> ~/.zshrc
 
 echo 'Installing Ghostty...'
 yay -S --needed --noconfirm ghostty tmux
+echo '' >> ~/.zshrc
+echo '# XDG path' >> ~/.zshrc
+echo 'export XDG_CONFIG_HOME="$HOME/.config"' >> ~/.zshrc
 
 echo 'Installing Insomnia...'
 yay -S --needed --noconfirm insomnia-bin
