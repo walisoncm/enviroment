@@ -15,11 +15,11 @@ sed -i 's/^ZSH_THEME=.*/ZSH_THEME="powerlevel10k\/powerlevel10k"/' ~/.zshrc
 
 yay -S --needed --noconfirm \
     adobe-source-code-pro-fonts \
-    ttf-fira-code-nerd \
+    ttf-firacode-nerd \
     ttf-hack-nerd \
     ttf-jetbrains-mono-nerd \
     ttf-meslo-nerd \
-    ttf-noto-sans-mono-nerd
+    nerd-fonts-noto-sans-mono
 
 echo 'Installing zsh-autosuggestions'
 git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
