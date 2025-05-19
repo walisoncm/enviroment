@@ -12,13 +12,14 @@ echo 'Installing the powerlevel10k theme...'
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
 echo '' >> ~/.zshrc
 sed -i 's/^ZSH_THEME=.*/ZSH_THEME="powerlevel10k\/powerlevel10k"/' ~/.zshrc
+
 yay -S --needed --noconfirm \
     adobe-source-code-pro-fonts \
-    nerd-fonts-fira-code \
-    nerd-fonts-hack \
-    nerd-fonts-jetbrains-mono \
-    nerd-fonts-meslo-lg \
-    nerd-fonts-noto-sans-mono
+    ttf-fira-code-nerd \
+    ttf-hack-nerd \
+    ttf-jetbrains-mono-nerd \
+    ttf-meslo-nerd \
+    ttf-noto-sans-mono-nerd
 
 echo 'Installing zsh-autosuggestions'
 git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
