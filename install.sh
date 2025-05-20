@@ -55,7 +55,7 @@ echo 'Installing Discord...'
 yay -S --needed --noconfirm discord
 
 echo 'Installing Docker...'
-yay -S --needed --noconfirm docker docker-desktop
+yay -S --needed --noconfirm docker-desktop
 sudo usermod -aG docker $USER
 sudo systemctl enable docker
 
